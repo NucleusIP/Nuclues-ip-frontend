@@ -1,0 +1,70 @@
+import { useState } from 'react';
+
+export default function Verify() {
+const [idFile, setIdFile] = useState(null);
+const [paystub, setPaystub] = useState(null);
+const [bankStatement, setBankStatement] = useState(null);
+const [creditReport, setCreditReport] = useState(null);
+
+const handleSubmit = (e) => {
+e.preventDefault();
+// Simulate verification logic
+alert('Verification submitted! Redirecting to pitch...');
+window.location.href = '/pitch';
+};
+
+return (
+<div className="min-h-screen bg-green-900 text-white p-6 flex flex-col items-center">
+<h1 className="text-3xl font-bold mb-6">Get Verified</h1>
+<form onSubmit={handleSubmit} className="bg-green-800 p-6 rounded-lg shadow-lg w-full max-w-xl space-y-6">
+
+<div>
+<label className="block mb-1 font-semibold">Upload Government ID</label>
+<input
+type="file"
+accept="image/*,application/pdf"
+onChange={(e) => setIdFile(e.target.files[0])}
+className="w-full bg-green-700 p-2 rounded"
+/>
+</div>
+
+<div>
+<label className="block mb-1 font-semibold">Upload Paystub</label>
+<input
+type="file"
+accept="image/*,application/pdf"
+onChange={(e) => setPaystub(e.target.files[0])}
+className="w-full bg-green-700 p-2 rounded"
+/>
+</div>
+
+<div>
+<label className="block mb-1 font-semibold">Upload Bank Statement</label>
+<input
+type="file"
+accept="image/*,application/pdf"
+onChange={(e) => setBankStatement(e.target.files[0])}
+className="w-full bg-green-700 p-2 rounded"
+/>
+</div>
+
+<div>
+<label className="block mb-1 font-semibold">Optional: Upload Credit Report</label>
+<input
+type="file"
+accept="image/*,application/pdf"
+onChange={(e) => setCreditReport(e.target.files[0])}
+className="w-full bg-green-700 p-2 rounded"
+/>
+</div>
+
+<button
+type="submit"
+className="w-full bg-purple-600 hover:bg-purple-700 py-3 rounded text-white font-bold transition"
+>
+Submit for AI Verification
+</button>
+</form>
+</div>
+);
+}
